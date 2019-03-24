@@ -4,7 +4,7 @@
 # fileformat - the file format
 # tempo - desired tempo
 # TO-DO
-#   1. write a function that scales numbers to notes
+#   1. write a function that scales numbers to notes - DONE
 #   2. write a function that calls that function on each list
 #   3. convert the resulting product into an actual MIDI
 #   4. test the dang thing
@@ -12,7 +12,9 @@
 
 import lib.MidiFile as m
 import pandas as p
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import minmax_scale
+from numpy import ndarray 
+from numpy import isnan
 
 VALIDFORMATS = ['csv', 'CSV', 'tsv', 'TSV', 'json', 'JSON']
 
@@ -73,10 +75,18 @@ class data2midi:
 
 	@staticmethod
 	def scaleNumbersToNotes(numbers):
-		"""Converts numerical data into MIDI notes ranging from 0 to 127. WIP."""
-		scaler = MinMaxScaler(feature_range=(0, 127))
-		print(scaler.transform(numbers))
-		return scaler.transform(numbers)
+		"""Converts numerical data into MIDI notes ranging from 0 to 127."""
+
+		#scale the values, transform them back into a list.
+		newnum = minmax_scale(numbers, (0, 127)).tolist()
+		ints = []
+		# if the value is a number, convert it into an integer. If it is NaN, convert it into zero.
+		for n in newnum:
+			if isnan(n):
+				ints.append(0)
+			else:
+				ints.append(int(n))
+		return ints
 
 	@staticmethod
 	def scaleLevelsToNotes(numbers):
