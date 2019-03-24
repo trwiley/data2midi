@@ -10,7 +10,7 @@
 #   4. test the dang thing
 #   5. make into a package
 
-import lib.MidiFile as m
+from lib.MidiFile import MIDIFile
 import pandas as p
 from sklearn.preprocessing import minmax_scale
 from numpy import ndarray 
@@ -38,6 +38,10 @@ class data2midi:
 	@property
 	def listarr(self):
 		return self.__list_array
+
+	def createMIDI(self):
+		"""create the MIDI object. WIP."""
+		trackCount = len(self.__notes)
 
 	def save(self, midi_filename):
 		"""Save the midi file created by the user"""
