@@ -5,7 +5,7 @@
 # tempo - desired tempo
 # TO-DO
 #   1. write a function that scales numbers to notes - DONE
-#   2. write a function that calls that function on each list
+#   2. write a function that calls that function on each list - DONE
 #   3. convert the resulting product into an actual MIDI
 #   4. test the dang thing
 #   5. make into a package
@@ -31,6 +31,9 @@ class data2midi:
 
 		# Convert that data frame into an array of lists.
 		self.__list_array = self.convertDFToMDList()
+
+		# convert the list array into MIDI notes
+		self.__notes = self.convertMDListToNotes()
 	
 	@property
 	def listarr(self):
@@ -51,6 +54,13 @@ class data2midi:
 			# Add the list to the outer multi-dimensional list.
 			outer_list.append(inner_list)
 		return(outer_list)
+
+	def convertMDListToNotes(self):
+		notesList = []
+
+		for l in self.__list_array:
+			notesList.append(self.scaleNumbersToNotes(l))
+		return notesList
 
 	@staticmethod
 	def isValidFormat(fileformat):
