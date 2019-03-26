@@ -45,7 +45,7 @@ class data2midi:
 		trackCount = len(self.__notes)
 		time = 0
 		duration = 1
-		tempo = 60
+		tempo = self.__tempo
 		volume = 100
 
 		midi = MIDIFile(trackCount)
