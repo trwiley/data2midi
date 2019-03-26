@@ -37,15 +37,36 @@ class data2midi:
 	
 	@property
 	def listarr(self):
+		"""Getter function for the list array."""
 		return self.__list_array
 
-	def createMIDI(self):
+	def resultMIDI(self):
 		"""create the MIDI object. WIP."""
 		trackCount = len(self.__notes)
+		time = 0
+		duration = 1
+		tempo = 60
+		volume = 100
 
-	def save(self, midi_filename):
+		midi = MIDIFile(trackCount)
+
+		for trackNumber, track in enumerate(self.__notes):
+			midi.addTempo(trackNumber, time, tempo)
+
+			for noteIndex, note in enumerate(track):
+				midi.addNote(trackNumber, trackNumber, note, time + noteIndex, duration, volume)
+
+		return midi
+
+	def save(self):
 		"""Save the midi file created by the user"""
-		pass
+		m = self.resultMIDI()
+		outputFile = self.__filename[:-3] + "mid"
+
+		with open(outputFile, "wb") as output_file:
+			m.writeFile(output_file)
+
+		
 
 	def convertDFToMDList(self):
 		""" Converts the data frame that is generated from the data the user passes in into a multi-dimensional list."""
