@@ -5,7 +5,7 @@
 # tempo - desired tempo
 
 
-from MIDIUtil import MIDIFile
+from midiutil import MIDIFile
 import pandas as p
 from sklearn.preprocessing import minmax_scale
 from numpy import ndarray 
