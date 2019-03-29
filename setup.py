@@ -6,7 +6,7 @@ setup(
     author='Taylor Wiley',
     author_email='taylor.r.wiley@gmail.com',
     packages=['data2midi'],
-    install_requires=['numpy', 'pandas', 'sklearn'],
+    install_requires=['numpy', 'pandas', 'sklearn', 'MIDIUtil'],
     version='0.1',
     license='GNU GPL',
     description='simple library for sonifying tabular numeric data by converting it into a MIDI file.'

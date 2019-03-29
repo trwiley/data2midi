@@ -10,7 +10,7 @@
 #   4. test the dang thing
 #   5. make into a package
 
-from lib.MidiFile import MIDIFile
+from MIDIUtil import MIDIFile
 import pandas as p
 from sklearn.preprocessing import minmax_scale
 from numpy import ndarray 
