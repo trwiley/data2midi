@@ -3,12 +3,7 @@
 # filename - name of the datafile
 # fileformat - the file format
 # tempo - desired tempo
-# TO-DO
-#   1. write a function that scales numbers to notes - DONE
-#   2. write a function that calls that function on each list - DONE
-#   3. convert the resulting product into an actual MIDI
-#   4. test the dang thing
-#   5. make into a package
+
 
 from MIDIUtil import MIDIFile
 import pandas as p
